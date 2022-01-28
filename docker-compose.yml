@@ -1,0 +1,14 @@
+version: '3.4'
+services:
+  api:
+    container_name: api
+    build: .
+    ports:
+      - "8080:8080"
+    links:
+      - pymemcached
+  pymemcached:
+    container_name: pymemcached
+    image: memcached:1.6.13-alpine
+    ports:
+      - "11211:11211"
